@@ -1,0 +1,42 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+
+
+
+    <GridLayout rows="100, auto" verticalAlignment="top" padding="{{ containerPadding }}">
+        <StackLayout>
+            <Label class="info" text="{{ 'height DIPs: ' + screenInformationheightDIPs }}"/>
+            <Label class="info" text="{{ 'width DIPs: ' + screenInformationwidthDIPs }}"/>
+            <Label class="info" text="{{ 'screenInformationscale: ' + screenInformationscale }}"/>
+            <Label class="info" text="{{ 'padding: ' + containerPadding }}"/>
+            <Label class="info" text="{{ 'device type: ' + device }}"/>
+        </StackLayout>
+
+
+        <Image row="1" loaded="{{  onImageLoaded }}" src="res://male" stretch="aspectFit" />
+
+
+
+            <Repeater row="1" items="{{ bodyPoints }}">
+                <Repeater.itemsLayout>
+                    <AbsoluteLayout />
+                </Repeater.itemsLayout>
+                <Repeater.itemTemplate>
+                    <Label
+                            width="{{$value.width}}"
+                            height="{{$value.width}}"
+                            top="{{ $value.top }}"
+                            left="{{ $value.left }}"
+                            text="{{ $value.top + ':' + $value.left }}"
+                            class="score"
+                    />
+                </Repeater.itemTemplate>
+            </Repeater>
+
+    </GridLayout>
+</Page>
